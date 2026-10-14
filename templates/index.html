@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f8fc">
+  <title>TechTutor AI — Learn by building</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="/" aria-label="TechTutor AI home">
+        <span class="brand-icon" aria-hidden="true">T</span>
+        <span><strong>TechTutor</strong><small>YOUR PERSONAL AI MENTOR</small></span>
+      </a>
+      <button id="new-chat" class="new-chat"><span>＋</span> New conversation</button>
+      <div class="history-heading">RECENT CONVERSATIONS</div>
+      <nav id="history-list" class="history-list" aria-label="Chat history"></nav>
+      <div class="sidebar-bottom">
+        <p>Learn something new today.<br><span>One concept at a time.</span></p>
+        <span class="local-badge"><span></span> Private &amp; running locally</span>
+      </div>
+    </aside>
+
+    <main class="main-panel">
+      <header class="topbar">
+        <button id="mobile-menu" class="icon-button menu-toggle" aria-label="Toggle conversation history">☰</button>
+        <div class="topbar-context"><span class="online-dot"></span> YOUR AI LEARNING PARTNER</div>
+        <div class="topbar-actions">
+          <label class="setting-label" for="model-select">MODEL</label>
+          <select id="model-select" aria-label="Choose an installed Ollama model"><option>Connecting to Ollama…</option></select>
+          <button id="theme-toggle" class="icon-button theme-button" aria-label="Switch color theme">☾</button>
+        </div>
+      </header>
+
+      <div class="workspace">
+        <section class="chat-area">
+          <div id="welcome" class="welcome">
+            <div class="welcome-mark"><span>✳</span></div>
+            <div class="eyebrow"><span></span> YOUR PERSONAL ENGINEERING TUTOR</div>
+            <h1>Big ideas, made <span>simple.</span></h1>
+            <p class="welcome-copy">Hi there! I'm TechTutor, your friendly learning companion.<br class="desktop-break"> Pick a subject or ask me anything to get started.</p>
+            <div class="subject-grid" role="group" aria-label="Choose a learning subject">
+              <button class="subject-card active" data-subject="AI/ML"><span class="subject-icon ai-icon">✳</span><span><strong>AI &amp; Machine Learning</strong><small>Models, LLMs, deep learning</small></span><span class="card-arrow">↗</span></button>
+              <button class="subject-card" data-subject="Web Development"><span class="subject-icon web-icon">⌘</span><span><strong>Web Development</strong><small>Frontend, backend, APIs</small></span><span class="card-arrow">↗</span></button>
+              <button class="subject-card" data-subject="UML"><span class="subject-icon uml-icon">◇</span><span><strong>UML &amp; Software Design</strong><small>Diagrams, architecture, Agile</small></span><span class="card-arrow">↗</span></button>
+              <button class="subject-card" data-subject="Programming"><span class="subject-icon prog-icon">&lt;/&gt;</span><span><strong>Programming</strong><small>Python, Java, C, SQL, DSA</small></span><span class="card-arrow">↗</span></button>
+              <button class="subject-card" data-subject="Career Guidance"><span class="subject-icon career-icon">↗</span><span><strong>Career Guidance</strong><small>Interviews, resumes, projects</small></span><span class="card-arrow">↗</span></button>
+            </div>
+          </div>
+          <div id="messages" class="messages" aria-live="polite"></div>
+          <div id="typing-indicator" class="typing-indicator" hidden><span></span><span></span><span></span><span>Thinking through that with you…</span></div>
+
+          <div class="composer-wrap">
+            <div class="level-picker" role="group" aria-label="Learning level">
+              <span>LEARNING LEVEL</span>
+              <button class="level-button selected" data-level="Beginner">Beginner</button>
+              <button class="level-button" data-level="Intermediate">Intermediate</button>
+              <button class="level-button" data-level="Advanced">Advanced</button>
+            </div>
+            <form id="chat-form" class="composer">
+              <textarea id="message-input" rows="1" maxlength="8000" placeholder="Ask me anything — I'm here to help you learn..." aria-label="Your message"></textarea>
+              <button id="send-button" class="send-button" type="submit" aria-label="Send message"><span>↑</span></button>
+             
+            </form>
+            <div class="composer-footer"><span><kbd>Enter</kbd> to send <span class="footer-divider">·</span> <kbd>Shift + Enter</kbd> for a new line</span><span>Powered by your local AI <span class="sparkle">✳</span></span></div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body>
+</html>
